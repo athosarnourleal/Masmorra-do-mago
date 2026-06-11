@@ -1,6 +1,6 @@
 # 🗡️ Dungeon Crawler: Masmorra do Mago
 
-**Masmorra do Mago** é um jogo de RPG no estilo *Dungeon Crawler* por turnos, desenvolvido com foco na exploração, gestão de recursos e combate tático. O jogador assume o papel de um mercenário destemido que deve descer pelos andares de uma masmorra gerada procedimentalmente, enfrentando criaturas corrompidas e desvendando mistérios antigos.
+**Masmorra do Mago** é um jogo de RPG no estilo *Dungeon Crawler* por turnos, desenvolvido com foco na exploração, gestão de recursos e combate tático. O jogador assume o papel de um mercenário destemido que deve descer pelos andares de uma masmorra, enfrentando criaturas e tentando matar o Mago
 
 ---
 
