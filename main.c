@@ -617,7 +617,7 @@ void buttonInteract(int ID) {
                 }
             }
             clear();
-            printf("\nvocê escuta um som ecoando do outro lado da sala...\n");
+            printf("\nvocê escuta um som de clique ecoando do outro lado da sala...\n");
             pause_text();
         break;
         case 1:
@@ -642,13 +642,17 @@ void buttonInteract(int ID) {
             pause_text();
         break;
         case 2:
-            for(i = 7; i <= 8; i++) {
+            for(i = 7; i <= 9; i++) {
                 for(j = 6; j <= 8; j++) {
                     if (getMap(i,j) == 0 && entityPointColision(i,j) == -1) {
                         placeInMap(i,j,6);
                     }
                 }
             }
+
+            clear();
+            printf("\nCom o clique do botão, varias caixas aparentemente inofensivas caem do teto\n");
+            pause_text();
         break;
         case 3:
             for(i = 1; i <= 2; i++) {// add spikes
@@ -656,6 +660,9 @@ void buttonInteract(int ID) {
                     if (getMap(i,j) == 0 && entityPointColision(i,j) == -1) placeInMap(i,j,2);
                 }
             }
+            clear();
+            printf("\nVários espinhos saem do chão e te prendem\n");
+            pause_text();
         break;
         case 4:
             for(i = 11; i <= 13; i++) {// remove spikes
@@ -781,16 +788,16 @@ void bossTeleport(int ID) {
 
 void bossDialogue() {
     clear();
-    printf("Z:\nO que procuras ao adentrar minha masmorra? \n");
+    printf("Z:\nQuem diria que algum dos tolos enviados pelo rei conseguiria chegar no meus aposentos\n");
     pause_text();
     clear();
-    printf("Z:\nVarios outros guerreiros mandados pelo rei trilharam o mesmo caminho que você, mas nenhum conseguiu chegar até mim antes\n");
+    printf("Z:\nVarios outros guerreiros trilharam o mesmo caminho que você, mas nenhum tinha atingido essa sala antes\n");
     pause_text();
     clear();
-    printf("Z:\nSaiba que tratarei os lacaios daquele traidor com nada menos que a morte!\n");
+    printf("Z:\nSaiba que planejo tratar os lacaios daquele traidor\n com a mesma crueldade que ele me mostrou!\n");
     pause_text();
     clear();
-    printf("Com uma exploão de luz do mago, todas as partes da sala somem para dar espaço para a batalha...");
+    printf("Com uma exploão de luz do mago, todas a estrutura da sala é refeita para dar espaço para um campo de batalha...");
     pause_text();
 }
 
@@ -1133,16 +1140,19 @@ void startingDialogue() {
     printf("no ano de 1820, o maior reino de toda a terra era oficialmente formado...");
     pause_text();
     clear();
-    printf("as lendas dizem que a chave para a grandiosidade do reino foi\na atuação do mago dito como mais poderoso do mundo\nque era o conselheiro direto do rei");
+    printf("as lendas dizem que a chave para a grandiosidade do reino foi\na atuação do mago conselheiro\nconsultor direto do rei");
     pause_text();
     clear();
-    printf("entretando, o rei, que temia o poder do mago, \norganizou uma armadilha para tentar tirar seus poderes e sua vida");
+    printf("entretando, o rei, temendo o poder do mago, \norganizou uma armadilha para tentar tirar seus poderes e sua vida");
     pause_text();
     clear();
-    printf("tentativa essa que foi falha, levando o mago a fugir, \nusando o resto de seus poderes para se trancar em uma masmorra\nlugar onde ele se recuperaria até que a hora da sua vingança\n");
+    printf("tentativa essa que foi falha, permitindo o mago fugir. \n");
     pause_text();
     clear();
-    printf("temendo a iminente ira do mago, \no rei decretou que teria como seu sucessor aquele \nque conseguisse trazer a cabeça do antigo conselheiro...\n");
+    printf("o mago usou o pouco que restou de seus poderes para se trancar em uma masmorra\nlugar onde ele se recuperaria até que a hora da sua vingança chegasse.\n");
+    pause_text();
+    clear();
+    printf("temendo a iminente ira do mago, \no rei decretou que teria como seu sucessor aquele \nque conseguisse trazer a cabeça do mago...\n");
     pause_text();
 }
 
