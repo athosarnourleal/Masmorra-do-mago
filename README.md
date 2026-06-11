@@ -31,7 +31,7 @@ Traído pelo rei, o maior mago do reino teve seus poderes severamente reduzidos 
 ## 🎮 Funcionalidades e Mecânicas
 Controles: "w,a,s,d": movimentação. "i": interagir. "o": atacar. o jogador deve descer para os proximos andares através das escadas e derrotar o Mago para ganhar
 - 'v', '<', '^', '>' : jogador
-- '*' : parede \n");
+- '*' : parede
 - '#' : espinho
 - 'k' : caixa 
 - 'o' : botao
