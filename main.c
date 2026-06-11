@@ -38,11 +38,11 @@ int villageMap[100] = {
     0, 1, 0, 1, 0, 0, 1, 0, 3, 1,
     1, 0, 0, 0, 1, 0, 1, 0, 0, 1,
     1, 0, 0, 0, 1, 0, 1, 4, 1, 1,
-    1, 0,12, 0, 1, 0, 0, 0, 0, 0,
-    1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 1, 0, 0, 0, 1, 1,
-    1, 1, 0, 1, 1, 0, 0, 1, 1, 1,
-    0, 0, 0, 0, 0, 0, 0, 4, 0, 0,
+    1, 0, 0, 0, 4, 0, 0, 0, 0, 0,
+    1, 0,12, 0, 1, 0, 0, 0, 0, 1,
+    1, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+    1, 1, 1, 1, 1, 0, 0, 1, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 4, 0,12,
     0, 0, 0, 0,-1, 0, 0, 1, 0, 0
 };
 
@@ -52,8 +52,8 @@ int floor1[100] = {// PRONTO
     1, 0,-1, 0, 1, 0, 3, 0, 0, 1,
     1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
     1, 6, 6, 6, 1, 1, 1, 4, 1, 1,
-    1, 0, 0, 0, 6, 0, 0, 0, 0, 1,
-    1, 6, 6, 0, 6, 0, 0, 0, 0, 1,
+    1, 0, 0, 0, 6, 6, 0, 0, 0, 1,
+    1, 6, 6, 0, 6, 6, 0, 0, 0, 1,
     1, 6, 6, 0, 6, 6, 6, 6, 6, 1,
     1, 6, 6, 0, 6, 6, 6, 7, 6, 1,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1
@@ -72,8 +72,8 @@ int floor2[255] = {
     1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 1,
     1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 9, 0, 0, 1,
     1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-    1, 5, 0, 0, 0, 0, 0, 0, 5, 1, 0, 0, 0,-1, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,-1, 0, 1,
+    1, 5, 0, 0, 0, 0, 0, 0, 5, 1, 0, 0, 0, 0, 1,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 };
 
@@ -160,7 +160,6 @@ struct entity {
     int y;
     int life;
     enum entityType type; // kind of entity
-    int arrayIndex;
     char sprite;
     int aux;
 };
@@ -334,7 +333,6 @@ void pushEntity(int x, int y, enum entityType type) {
     entities[entityNumber].x = x;
     entities[entityNumber].y = y;
     entities[entityNumber].type = type;
-    entities[entityNumber].arrayIndex = entityNumber;
     entities[entityNumber].life = 1;
     entities[entityNumber].aux = 0;
 
@@ -373,6 +371,13 @@ void pushEntity(int x, int y, enum entityType type) {
         case VILLAGER:
             entities[entityNumber].sprite = entitySprite[8];
             setMap(1,x,y); // activate colision
+
+            int houseDoor = entityPointColision(4,4);
+            if (houseDoor != -1) {
+                setMap(0, 4, 4);
+                entities[houseDoor].aux = 1;
+                entities[houseDoor].sprite = entitySprite[3];
+            }
         break;
         case FLYINGSPIKE:
             entities[entityNumber].sprite = mapSprites[2];
@@ -788,16 +793,16 @@ void bossTeleport(int ID) {
 
 void bossDialogue() {
     clear();
-    printf("Z:\nQuem diria que algum dos tolos enviados pelo rei conseguiria chegar no meus aposentos\n");
+    printf("Z:\nQuem diria que algum dos tolos enviados pelo rei \nconseguiria chegar no meus aposentos\n");
     pause_text();
     clear();
-    printf("Z:\nVarios outros guerreiros trilharam o mesmo caminho que você, mas nenhum tinha atingido essa sala antes\n");
+    printf("Z:\nVarios outros guerreiros trilharam o mesmo caminho que você, \nmas nenhum tinha atingido essa sala antes\n");
     pause_text();
     clear();
-    printf("Z:\nSaiba que planejo tratar os lacaios daquele traidor\n com a mesma crueldade que ele me mostrou!\n");
+    printf("Z:\nSaiba que planejo tratar os lacaios daquele traidor \ncom a mesma crueldade que ele me mostrou!\n");
     pause_text();
     clear();
-    printf("Com uma exploão de luz do mago, todas a estrutura da sala é refeita para dar espaço para um campo de batalha...");
+    printf("Com uma exploão de luz do mago, todas a estrutura da sala é refeita \npara dar espaço para um campo de batalha...");
     pause_text();
 }
 
@@ -812,7 +817,7 @@ void bossTick(int ID) {
     switch (bossPhase) {
         case 0: // in jail
             int doorID = entityPointColision(entities[ID].x,entities[ID].y+1);
-            if (entities[doorID].aux == 1) {// door open
+            if (entities[doorID].aux == 1) {// door is opened --> START BOSS FIGHT
 
                 // break jail
                 for(i = 1; i <= 19; i++) {
@@ -1171,9 +1176,7 @@ void game() {
     universalButtonCounter = 0;
 
     currentRoom = 0;
-    setMapAsPreset(currentRoom); // village
-
-    startingDialogue();
+    setMapAsPreset(currentRoom);
 
     clear();
     gameState = INGAME;
@@ -1233,7 +1236,7 @@ void tutorialScreen() {
     printf("X : monstro burro \n");
     printf("Y : monstro \n");
     printf("Z : mago \n");
-    printf("\npage 1/2\n");
+    printf("\npage 1/3\n");
     pause_text();
     clear();
 
@@ -1241,27 +1244,55 @@ void tutorialScreen() {
     printf("w, a, s, d: movimento\n");
     printf("i: interagir\n");
     printf("o: atacar\n");
-    printf("\npage 2/2\n");
+    printf("\npage 2/3\n");
+    flushInputBuffer();
     pause_text();
     clear();
+
+    startingDialogue();
 }
 
 void mainMenu() {
     int exit = 0;
     int choice = -100;
+    int option = 0;
 
     while (exit == 0) {
+        option = 0;
+        choice = -100;
         do {
             clear();
-            printf("###### MASMORRA DO MAGO #####\n\n");
+            printf("\n###### MASMORRA DO MAGO #####\n\n");
 
-            printf("\t 1. iniciar jogo\n");
-            printf("\t 2. tutorial\n");
-            printf("\t 3. sair\n");
+            if (option == 0) {
+                printf("\t> ");
+            } else {
+                printf("\t  ");
+            }
+            printf("iniciar jogo\n");
 
-            printf("select option: ");
-            scanf("%d", &choice);
-            flushInputBuffer();
+            if (option == 1) {
+                printf("\t> ");
+            } else {
+                printf("\t  ");
+            }
+            printf("tutorial\n");
+
+            if (option == 2) {
+                printf("\t> ");
+            } else {
+                printf("\t  ");
+            }
+            printf("sair\n\n");
+
+            printf("'i': selecionar\n");
+            printf("'w','s': mover\n");
+
+            int command = mygetch();
+            if (command == 'w') option = (option+2)%3;
+            if (command == 's') option = (option+1)%3;
+            if (command == 'i') choice = option + 1;
+
         } while (choice < 1 || choice > 3);
 
         switch(choice) {
