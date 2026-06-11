@@ -29,7 +29,20 @@ Traído pelo rei, o maior mago do reino teve seus poderes severamente reduzidos 
 ---
 
 ## 🎮 Funcionalidades e Mecânicas
-Controles: "w,a,s,d": movimentação. "i": interagir. "o": atacar
+Controles: "w,a,s,d": movimentação. "i": interagir. "o": atacar. o jogador deve descer para os proximos andares através das escadas e derrotar o Mago para ganhar
+- 'v', '<', '^', '>' : jogador
+- '*' : parede \n");
+- '#' : espinho
+- 'k' : caixa 
+- 'o' : botao
+- 'D' : porta fechada
+- '=' : porta aberta
+- '@' : chave
+- 'L' : escada
+- 'V' : aldeão
+- 'X' : monstro burro
+- 'Y' : monstro 
+- 'Z' : mago
 
 ---
 
@@ -38,3 +51,5 @@ Controles: "w,a,s,d": movimentação. "i": interagir. "o": atacar
 projeto feito com linguagem C, usando como referência o livro "linguagem C completa e descomplicada" do autor André Backes, não foi usada nenhuma forma de IA generativa na produção desse jogo. Seu funcionameno provavelmente não será possivel fora de sistemas operacionais Linux, ja que usa da biblioteca <termios.h>.
 
 ---
+
+## desenvolvedor: Athos Arnour Leal
