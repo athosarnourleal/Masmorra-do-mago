@@ -14,7 +14,7 @@ Traído pelo rei, o maior mago do reino teve seus poderes severamente reduzidos 
 
 ### Menu Principal
 <p align="center">
-  <img src="/menu.png" alt="Menu Principal do Jogo" width="100%">
+  <img src="/menuImage.png" alt="Menu Principal do Jogo" width="100%">
   <br>
   <em> Menu principal exibindo as opções de início.</em>
 </p>
