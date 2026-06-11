@@ -16,14 +16,14 @@ Traído pelo rei, o maior mago do reino teve seus poderes severamente reduzidos 
 <p align="center">
   <img src="/menu.png" alt="Menu Principal do Jogo" width="100%">
   <br>
-  <em>Legenda: Menu principal exibindo a arte concetual e as opções de início.</em>
+  <em> Menu principal exibindo as opções de início.</em>
 </p>
 
 ### Demonstração de Jogabilidade
 <p align="center">
   <img src="/gameplay1.png" alt="Jogabilidade na Masmorra" width="100%">
   <br>
-  <em>Legenda: Sistema de combate e movimentação por quadrantes dentro da cripta.</em>
+  <em>Sistema de combate e movimentação por quadrantes</em>
 </p>
 
 ---
