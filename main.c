@@ -1222,7 +1222,7 @@ void tutorialScreen() {
     printf("V : aldeão \n");
     printf("X : monstro burro \n");
     printf("Y : monstro \n");
-    printf("Z : monstro chefe \n");
+    printf("Z : mago \n");
     printf("\npage 1/2\n");
     pause_text();
     clear();
